@@ -1,6 +1,6 @@
 # toronto-covid-api
 
-An API for COVID-19 data related to Toronto, Ontario.
+An API, supporting GET and POST requests, for COVID-19 data related to Toronto, Ontario.
 
 ## Current Features
 
