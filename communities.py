@@ -6,10 +6,12 @@ from gd_download import download_file_from_gd
 import json
 from openpyxl import load_workbook
 
-# settings
+# file with community data
+# https://drive.google.com/file/d/1jzH64LvFQ-UsDibXO0MOtvjbL2CvnV3N/view
 gd_id = "1jzH64LvFQ-UsDibXO0MOtvjbL2CvnV3N"
 excel_file = "communities.xlsx"
 output_file = "communities.json"
+# column names in data
 cols = ["id", "name", "rate", "count", "ltchrh_rate", "ltchrh_cases", "non_ltchrh_rate", "non_ltchrh_cases", "recent_rate", "recent_cases", "recent_ltchrh_rate", "recent_ltchrh_cases", "recent_non_ltchrh_rate", "recent_non_ltchrh_cases"]
 
 def update():
@@ -19,6 +21,7 @@ def update():
 
     wb = load_workbook("communities.xlsx")
 
+    # get the four wanted worksheets of the workbook
     all_cases = wb["All Cases and Rates by Neighbou"]
     all_ltchrh = wb["LTCH-RH Cases and Rates by Neig"]
     recent_cases = wb["Recent Cases and Rates by Neigh"]
@@ -53,12 +56,14 @@ def update():
             communities[index][cols[12]] = row[3] # recent non ltch/rh rate
             communities[index][cols[13]] = row[4] # recent non ltch/rh cases
 
-    # as of
+    # "as of" date
     data_date = wb["Data Note"]["A2"].value[11:]
     formatted_date = datetime.strptime(data_date, "%B %d, %Y").strftime("%m/%d/%Y")
 
+    # combining the data and the date
     full_data = {"data": communities, "as_of": formatted_date}
     
+    # storing in JSON file
     with open(output_file, "w") as f:
         json.dump(full_data, f)
 
@@ -70,6 +75,7 @@ def api():
 
     with open(output_file, "r") as f:
         community_data = json.load(f)
+        # filtering out data
         for param, value in bottle.request.params.items():
             if param in cols:
                 community_data["data"] = list(filter(lambda x: str(x[param]) == value, community_data["data"]))

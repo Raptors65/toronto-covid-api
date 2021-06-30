@@ -26,7 +26,7 @@ def update():
     date_row = entries[0]
     # getting the part after "last updated at" and ignoring .s
     as_of = date_row.td.get_text()[16:].replace(".", "").strip()
-    # converting the 
+    # converting the time to a consistent format
     as_of_date = datetime.strptime(as_of, "%I:%M %p %B %d, %Y").strftime("%m/%d/%Y %H:%M:00")
 
     schools = []
@@ -36,8 +36,10 @@ def update():
 
         schools.append(dict(zip(cols, (types[i](j) if j else 0 for i, j in enumerate(cells)))))
     
+    # combining the data and the date
     full_data = {"data": schools, "as_of": as_of_date}
 
+    # storing in JSON file
     with open(output_file, "w") as f:
         json.dump(full_data, f)
 

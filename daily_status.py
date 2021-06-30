@@ -13,17 +13,21 @@ output_file = "daily_status.json"
 def update():
     """Updates daily report of case status."""
 
+    # loads the downloaded excel file (from daily_cases.py)
     wb = load_workbook(excel_file)
     daily_status_data = wb["Status"]
     status = []
     for row in daily_status_data.iter_rows(min_row=2, values_only=True):
         status.append(dict(zip(cols, row)))
     
-    data_date = wb["Data Note"]["A2"].value[11:] # "as of" date
+    # "as of" date
+    data_date = wb["Data Note"]["A2"].value[11:]
     formatted_date = datetime.strptime(data_date, "%B %d, %Y").strftime("%m/%d/%Y")
 
+    # combining the data and the date
     full_data = {"data": status, "as_of": formatted_date}
 
+    # storing in JSON file
     with open(output_file, "w") as f:
         json.dump(full_data, f)
 
@@ -34,6 +38,7 @@ def api():
 
     with open(output_file, "r") as f:
         daily_status = json.load(f)
+        # filtering out data
         for param, value in bottle.request.params.items():
             if param in cols:
                 daily_status["data"] = list(filter(lambda x: str(x[param]) == value, daily_status["data"]))
