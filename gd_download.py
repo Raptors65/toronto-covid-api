@@ -1,3 +1,5 @@
+"""Provides functions to download files from Google Drive."""
+
 import requests
 
 def download_file_from_gd(id, destination):

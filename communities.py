@@ -1,3 +1,5 @@
+"""Downloads and converts community data into JSON, and deals with requests."""
+
 import bottle
 from datetime import datetime
 from gd_download import download_file_from_gd

@@ -1,3 +1,5 @@
+"""Updates data, starts the web server, and starts the scheduler."""
+
 from apscheduler.schedulers.background import BackgroundScheduler
 import bottle
 from datetime import datetime, timedelta
@@ -5,8 +7,7 @@ from datetime import datetime, timedelta
 import communities, schools, daily_cases, daily_status
 
 def update_data():
-    """Updates the data in the JSON files."""    
-
+    """Updates the data in the JSON files."""
 
     print("Updating data...")
 

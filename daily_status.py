@@ -1,3 +1,5 @@
+"""Converts data from the daily status Excel file into JSON and deals with requests."""
+
 import bottle
 from datetime import datetime
 from daily_cases import excel_file
@@ -17,8 +19,7 @@ def update():
     for row in daily_status_data.iter_rows(min_row=2, values_only=True):
         status.append(dict(zip(cols, row)))
     
-    # as of
-    data_date = wb["Data Note"]["A2"].value[11:]
+    data_date = wb["Data Note"]["A2"].value[11:] # "as of" date
     formatted_date = datetime.strptime(data_date, "%B %d, %Y").strftime("%m/%d/%Y")
 
     full_data = {"data": status, "as_of": formatted_date}

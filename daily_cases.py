@@ -1,3 +1,5 @@
+"""Downloads the daily Toronto COVID-19 update from Google Drive."""
+
 from gd_download import download_file_from_gd
 
 # settings

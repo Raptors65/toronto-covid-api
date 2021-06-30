@@ -1,3 +1,5 @@
+"""Web scrapes school data, converts it to JSON, and deals with requests."""
+
 import bottle
 from bs4 import BeautifulSoup
 from datetime import datetime
