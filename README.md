@@ -13,8 +13,10 @@ Includes total and recent data for each community, including long-term care home
 ### Schools
 Includes student, staff, and resolved cases for each school and whether the school is open.
 
+### Episode vs Reported Date
+Includes resolved, active, and deceased cases organized by episode and reported date.
+
 ## Planned Features
 
-- Cases by episode vs reported date
 - Cases by outbreak type
 - Toronto compared to other Ontario health units
