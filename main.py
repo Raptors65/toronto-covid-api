@@ -10,9 +10,10 @@ data_to_update = [communities, schools, daily_cases, daily_status, episode_date,
 def update_data():
     """Updates the data in the JSON files."""
 
-    print("Updating data...")
+    print("Updating data...\n")
 
     for data in data_to_update:
+        print(f"Updating {data.__name__}")
         data.update()
     
     print("Data successfully updated!")
