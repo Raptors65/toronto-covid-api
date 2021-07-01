@@ -7,7 +7,7 @@ import json
 from openpyxl import load_workbook
 
 # settings
-cols = ["indicator", "cumulative", "newly_reported"]
+cols = ["indicator", "newly_reported", "cumulative"]
 output_file = "daily_status.json"
 
 def update():

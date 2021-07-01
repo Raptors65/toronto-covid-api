@@ -25,4 +25,4 @@ if __name__ == "__main__":
     sched.start()
 
     # start web server
-    bottle.run(host="0.0.0.0", ports=1234)
+    bottle.run()
