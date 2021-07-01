@@ -14,7 +14,7 @@ Includes total and recent data for each community, including long-term care home
 Includes student, staff, and resolved cases for each school and whether the school is open.
 
 ### Episode vs Reported Date
-Includes resolved, active, and deceased cases organized by episode and reported date.
+Includes resolved, active, and deceased, confirmed VOC, and screened positive VOC cases organized by episode and reported date.
 
 ## Planned Features
 
