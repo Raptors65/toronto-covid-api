@@ -4,17 +4,17 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import bottle
 from datetime import datetime, timedelta
 
-import communities, schools, daily_cases, daily_status
+import communities, schools, daily_cases, daily_status, episode_date, reported_date
+data_to_update = [communities, schools, daily_cases, daily_status, episode_date, reported_date]
 
 def update_data():
     """Updates the data in the JSON files."""
 
-    print("Updating data...")
+    print("Updating data...\n")
 
-    communities.update()
-    schools.update()
-    daily_cases.update()
-    daily_status.update()
+    for data in data_to_update:
+        print(f"Updating {data.__name__}")
+        data.update()
     
     print("Data successfully updated!")
 
