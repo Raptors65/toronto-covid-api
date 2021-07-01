@@ -1,4 +1,4 @@
-"""Converts data from the daily status Excel file into JSON and deals with requests."""
+"""Converts summary data from the daily status Excel file into JSON and deals with requests."""
 
 import bottle
 from datetime import datetime
