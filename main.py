@@ -5,18 +5,15 @@ import bottle
 from datetime import datetime, timedelta
 
 import communities, schools, daily_cases, daily_status, episode_date, reported_date
+data_to_update = [communities, schools, daily_cases, daily_status, episode_date, reported_date]
 
 def update_data():
     """Updates the data in the JSON files."""
 
     print("Updating data...")
 
-    communities.update()
-    schools.update()
-    daily_cases.update()
-    daily_status.update()
-    episode_date.update()
-    reported_date.update()
+    for data in data_to_update:
+        data.update()
     
     print("Data successfully updated!")
 
