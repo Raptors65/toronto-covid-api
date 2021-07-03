@@ -2,6 +2,12 @@
 
 An API, supporting GET and POST requests, for COVID-19 data related to Toronto, Ontario.
 
+## Installation
+1. Fork and clone the git repository.
+2. Install the required libraries: `apscheduler`, `bottle`, `beautifulsoup4`, `openpyxl`, `requests`.
+3. Run `main.py`.
+4. Now, you should be able to use the API with `http://localhost:8080/<feature ID>`.
+
 ## Current Features
 
 ### Daily Status
@@ -20,3 +26,7 @@ Includes resolved, active, and deceased, confirmed VOC, and screened positive VO
 
 - Cases by outbreak type
 - Toronto compared to other Ontario health units
+
+## Known Issues
+
+- Small typo in a date in a spreadsheet, like an additional space, will cause an error. While uncommon, this does occur on some days.
